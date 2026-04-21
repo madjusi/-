@@ -1,228 +1,197 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pour Toi ❤️</title>
-    <!-- Importation de polices élégantes -->
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --primary-color: #ff4d6d;
-            --secondary-color: #ff758f;
-            --bg-dark: #0f0c29;
-            --glass: rgba(255, 255, 255, 0.1);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pour Toi ❤️</title>
 
-        body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            font-family: 'Poppins', sans-serif;
-            background: radial-gradient(circle at center, #24243e 0%, #0f0c29 100%);
-            color: white;
-            overflow: hidden; /* Empêche le scroll pendant l'animation */
-        }
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-        /* Conteneur principal pour les transitions */
-        .container {
-            position: relative;
-            height: 100vh;
-            width: 100%;
-        }
+<style>
+:root {
+    --primary-color: #ff4d6d;
+}
 
-        .section {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-            box-sizing: border-box;
-            transition: opacity 1s ease, transform 1s ease;
-        }
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    overflow: hidden;
 
-        .hidden {
-            opacity: 0;
-            pointer-events: none;
-            transform: translateY(-20px);
-        }
+    background: linear-gradient(-45deg, #0f0c29, #24243e, #302b63, #ff4d6d);
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
+}
 
-        /* Intro */
-        .intro h1 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 4em;
-            margin-bottom: 10px;
-            background: linear-gradient(to right, #ff4d6d, #ffb3c1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            drop-shadow: 0 10px 20px rgba(255, 77, 109, 0.3);
-        }
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
 
-        .btn {
-            margin-top: 30px;
-            padding: 15px 40px;
-            border: none;
-            border-radius: 50px;
-            background: var(--primary-color);
-            color: white;
-            font-size: 1.1em;
-            font-weight: 600;
-            cursor: pointer;
-            box-shadow: 0 10px 20px rgba(255, 77, 109, 0.4);
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+.container {
+    position: relative;
+    height: 100vh;
+}
 
-        .btn:hover {
-            background: var(--secondary-color);
-            transform: scale(1.05) translateY(-3px);
-            box-shadow: 0 15px 25px rgba(255, 77, 109, 0.6);
-        }
+.section {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: 1s;
+}
 
-        /* Carte de message */
-        .card {
-            max-width: 600px;
-            width: 90%;
-            background: var(--glass);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            padding: 40px;
-            border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
-            max-height: 80vh;
-            overflow-y: auto;
-            scrollbar-width: thin;
-            scrollbar-color: var(--primary-color) transparent;
-        }
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
 
-        .card h2 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 2.5em;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-        }
+/* INTRO */
+.intro h1 {
+    font-family: 'Dancing Script';
+    font-size: 4em;
+    color: #ffb3c1;
+    text-shadow: 0 0 15px #ff4d6d;
+}
 
-        .card p {
-            font-size: 1.05em;
-            line-height: 1.7;
-            margin-bottom: 15px;
-            color: #e0e0e0;
-            text-align: left;
-        }
+.btn {
+    margin-top: 20px;
+    padding: 15px 40px;
+    border-radius: 50px;
+    border: none;
+    background: var(--primary-color);
+    color: white;
+    cursor: pointer;
+}
 
-        /* Coeurs flottants */
-        .heart {
-            position: fixed;
-            bottom: -50px;
-            color: var(--primary-color);
-            user-select: none;
-            pointer-events: none;
-            z-index: -1;
-            animation: floatUp linear infinite;
-        }
+/* CARD */
+.card {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(15px);
+    padding: 30px;
+    border-radius: 20px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+}
 
-        @keyframes floatUp {
-            0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 0;
-            }
-            10% { opacity: 0.8; }
-            90% { opacity: 0.4; }
-            100% {
-                transform: translateY(-110vh) rotate(360deg);
-                opacity: 0;
-            }
-        }
+/* GALERIE PORTRAIT */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
 
-        /* Personnalisation de la barre de défilement pour la carte */
-        .card::-webkit-scrollbar { width: 6px; }
-        .card::-webkit-scrollbar-thumb { background: var(--primary-color); border-radius: 10px; }
-    </style>
+.gallery img {
+    width: 100%;
+    aspect-ratio: 3 / 4; /* 👉 format portrait */
+    object-fit: cover;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+}
+
+/* POPUP */
+.popup {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup img {
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.popup.hidden {
+    display: none;
+}
+</style>
 </head>
 
 <body>
 
-    <div class="container">
-        <!-- Page 1 -->
-        <section class="section" id="intro-section">
-            <div>
-                <h1>Pour Toi ❤️</h1>
-                <p>J’ai quelque chose d’important à te dire...</p>
-                <button class="btn" onclick="showMessage()">Ouvrir mon cœur</button>
-            </div>
-        </section>
+<div class="container">
 
-        <!-- Page 2 -->
-        <section class="section hidden" id="message-section">
-            <div class="card">
-                <h2>Mon Amour ❤️</h2>
-                <p>Mon amour, il y a des choses que les mots n’arrivent pas toujours à expliquer, mais aujourd’hui j’ai envie d’essayer parce que tu comptes pour moi d’une manière que je ne peux plus cacher.</p>
-                
-                <p> Tu es entré dans ma vie sans prévenir et petit à petit tu as pris une place que personne d’autre n’a jamais occupée. Avec toi je ressens quelque chose de vrai, quelque chose de rare, quelque chose qui me touche au plus profond de mon cœur. Je ne dis pas que tout est parfait, j’ai tant de défauts mais tu ne cesses de me supporter, et malgré tout ce que je peux être, tu es toujours là.</p>
-                
-                <p>Ce que je ressens pour toi est sincère. Tu es important pour moi et malgré mes silences, mes peurs ou mes blessures, il y a toujours une partie de moi qui te choisit. Quand je pense à toi mon cœur se calme et en même temps il bat plus fort, comme si tu étais à la fois ma paix et mon trouble.</p>
-                
-                <p>Quand je pense à toi mon cœur se calme et en même temps il bat plus fort, comme si tu étais à la fois ma paix et mon trouble.</p>
-                
-                <p>Je ne sais pas ce que l’avenir nous réserve, mais je sais une chose, ce que je ressens pour toi est réel, et ça ne s’invente pas.</p>
-            </div>
-        </section>
+<!-- INTRO -->
+<section class="section" id="intro">
+    <h1>Pour Toi ❤️</h1>
+    <button class="btn" onclick="openMessage()">Ouvrir</button>
+</section>
+
+<!-- MESSAGE -->
+<section class="section hidden" id="message">
+    <div class="card">
+
+        <h2>Mon Amour ❤️</h2>
+
+        <!-- GALERIE -->
+        <div class="gallery">
+            <img src="images/photo1.png" alt="photo1">
+            <img src="images/photo2.png" alt="photo2">
+            <img src="images/photo3.png" alt="photo3">
+            <img src="images/photo4.png" alt="photo4">
+        </div>
+
+        <p>Mon amour, il y a des choses que les mots n’arrivent pas toujours à expliquer, mais aujourd’hui j’ai envie d’essayer parce que tu comptes pour moi d’une manière que je ne peux plus cacher</p>
+        <p>Tu es entré dans ma vie sans prévenir et petit à petit tu as pris une place que personne d’autre n’a jamais occupée</p>
+        <p>Avec toi je ressens quelque chose de vrai, quelque chose de rare, quelque chose qui me touche au plus profond de mon cœur</p>
+        <p>Je ne dis pas que tout est parfait, j’ai tant de défauts mais tu ne cesses de me supporter, et malgré tout ce que je peux être, tu es toujours là</p>
+        <p>Tu es important pour moi et malgré mes silences, mes peurs ou mes blessures, il y a toujours une partie de moi qui te choisit.</p>
+        <p> Tu es important pour moi et malgré mes silences, mes peurs ou mes blessures, il y a toujours une partie de moi qui te choisit</p>
+
     </div>
+</section>
+
+</div>
+
+<!-- POPUP -->
+<div id="popup" class="popup hidden">
+    <img id="popup-img">
+</div>
+
+<!-- MUSIQUE -->
+<audio autoplay loop>
+    <source src="musique.mp3" type="audio/mpeg">
+</audio>
 
 <script>
-    function showMessage() {
-        // Transition douce
-        document.getElementById('intro-section').classList.add('hidden');
-        
-        setTimeout(() => {
-            document.getElementById('intro-section').style.display = 'none';
-            const msgSection = document.getElementById('message-section');
-            msgSection.classList.remove('hidden');
-        }, 1000);
+function openMessage() {
+    document.getElementById("intro").classList.add("hidden");
+    setTimeout(() => {
+        document.getElementById("message").classList.remove("hidden");
+    }, 800);
+}
+
+/* POPUP IMAGE */
+const imgs = document.querySelectorAll(".gallery img");
+const popup = document.getElementById("popup");
+const popupImg = document.getElementById("popup-img");
+
+imgs.forEach(img => {
+    img.onclick = () => {
+        popup.classList.remove("hidden");
+        popupImg.src = img.src;
     }
+});
 
-    /* Générateur de cœurs amélioré */
-    function createHeart() {
-        const heart = document.createElement("div");
-        heart.className = "heart";
-        
-        // Caractères de coeur variés
-        const heartTypes = ["❤️", "💖", "💝", "✨", "🌸"];
-        heart.innerHTML = heartTypes[Math.floor(Math.random() * heartTypes.length)];
-        
-        // Position aléatoire
-        heart.style.left = Math.random() * 100 + "vw";
-        
-        // Taille aléatoire
-        const size = (Math.random() * 15 + 15) + "px";
-        heart.style.fontSize = size;
-        
-        // Vitesse aléatoire
-        const duration = (Math.random() * 3 + 4) + "s";
-        heart.style.animationDuration = duration;
-        
-        // Opacité de base
-        heart.style.opacity = Math.random() * 0.5 + 0.5;
-
-        document.body.appendChild(heart);
-
-        // Supprimer après l'animation
-        setTimeout(() => {
-            heart.remove();
-        }, parseFloat(duration) * 1000);
-    }
-
-    // Création régulière de coeurs
-    setInterval(createHeart, 400);
+popup.onclick = () => popup.classList.add("hidden");
 </script>
 
 </body>
